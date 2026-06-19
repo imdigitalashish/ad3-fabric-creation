@@ -6,78 +6,205 @@
   <title>SLI Creation</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root { --r-link-color: #4EC5D4; --r-link-color-hover: #4EC5D4; }
-    .reveal .gradient-title {
-      font-size: 3.6rem;
-      font-weight: 800;
-      background: linear-gradient(45deg, #4EC5D4 10%, #146b8c 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+    :root {
+      --bg:     #0B0C0E;
+      --fg:     #F4F4F5;
+      --muted:  #8B8E95;
+      --accent: #4EC5D4;
+      --line:   rgba(255,255,255,0.09);
     }
-    .reveal .teal { color: #4EC5D4; font-weight: 700; }
-    .reveal .muted { opacity: 0.75; }
-    .reveal .why-grid {
+
+    /* ---------- base ---------- */
+    .reveal {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .reveal-viewport {
+      background:
+        radial-gradient(60% 50% at 85% 0%, rgba(78,197,212,0.10), transparent 70%),
+        var(--bg);
+    }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section {
+      padding: 0 6%;
+      box-sizing: border-box;
+    }
+
+    /* ---------- typography ---------- */
+    .reveal h1 {
+      font-size: 3.6em;
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.0;
+      margin: 0;
+      color: var(--fg);
+      text-transform: none;
+    }
+    .reveal h2 {
+      font-size: 2.1em;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.06;
+      margin: 0 0 0.55em;
+      color: var(--fg);
+      text-transform: none;
+    }
+    .reveal p { line-height: 1.5; }
+    .reveal em { color: var(--fg); font-style: normal; font-weight: 500; }
+    .reveal .accent { color: var(--accent); }
+
+    /* ---------- eyebrow ---------- */
+    .reveal .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.46em;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9em;
+      margin: 0 0 1.4em;
+    }
+    .reveal .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* ---------- title slide ---------- */
+    .reveal .subtitle {
+      font-size: 0.92em;
+      color: var(--muted);
+      margin: 0.7em 0 0;
+      max-width: 22ch;
+    }
+
+    /* ---------- lead paragraph ---------- */
+    .reveal .lead {
+      font-size: 0.94em;
+      color: var(--muted);
+      max-width: 30ch;
+      margin: 0 0 1.3em;
+    }
+
+    /* ---------- points list ---------- */
+    .reveal .points {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5em 1.4em;
-      font-size: 0.62em;
-      text-align: left;
-      margin-top: 0.4em;
+      gap: 0.85em;
+      max-width: 30ch;
     }
-    .reveal .punch { font-size: 1.1em; margin-top: 0.6em; }
+    .reveal .points li {
+      position: relative;
+      padding-left: 1.5em;
+      font-size: 0.72em;
+      line-height: 1.4;
+    }
+    .reveal .points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .reveal .points strong { font-weight: 600; color: var(--fg); }
+    .reveal .points span   { color: var(--muted); }
+
+    .reveal .kicker {
+      margin-top: 1.5em;
+      font-size: 0.8em;
+      font-weight: 500;
+      color: var(--accent);
+      max-width: 28ch;
+    }
+
+    /* ---------- chrome: footer + slide number + progress ---------- */
+    .reveal .footer {
+      position: fixed;
+      bottom: 26px;
+      left: 6%;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      z-index: 30;
+    }
+    .reveal .slide-number {
+      font-family: 'JetBrains Mono', monospace;
+      background: transparent;
+      color: var(--muted);
+      right: 6%;
+      bottom: 22px;
+      font-size: 13px;
+    }
+    .reveal .progress { color: var(--accent); height: 2px; }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- Slide 1 -->
-      <section>
-        <h1 class="gradient-title">SLI Creation</h1>
-        <p>Ashish</p>
+      <!-- Slide 1 — Title -->
+      <section data-auto-animate>
+        <span class="eyebrow">Reliability Engineering</span>
+        <h1 data-id="title">SLI Creation</h1>
+        <p class="subtitle">Measuring what your users actually feel.</p>
       </section>
 
-      <!-- Slide 2 -->
+      <!-- Slide 2 — Why -->
       <section>
-        <h2>Why create SLIs? 🤔</h2>
+        <span class="eyebrow">Service Level Indicators</span>
+        <h2>Why we create SLIs</h2>
 
-        <p class="muted">
-          It's 2 AM. The dashboard is <em>green</em>, the CPU is <em>fine</em>, the
-          server is <em>up</em> ✅ — so why are customers angry?
-          Because <span class="teal">"up" ≠ "working well."</span>
+        <p class="lead">
+          It's 2&nbsp;AM. Dashboards <em>green</em>, CPU <em>fine</em>, server
+          <em>up</em> — yet users are angry. <span class="accent">"Up" isn't "working well."</span>
         </p>
 
-        <p class="fragment">
-          An <strong>SLI</strong> turns the user's actual experience into a number
-          you can see — <em>"did the page load fast? did the request succeed?"</em>
-          — not <em>"is the CPU busy?"</em>
-        </p>
+        <ul class="points">
+          <li class="fragment fade-up"><strong>Measure what users feel</strong> <span>— facts, not guesses</span></li>
+          <li class="fragment fade-up"><strong>End the "is it broken?" debate</strong> <span>— above the line, or below it</span></li>
+          <li class="fragment fade-up"><strong>Spend the error budget wisely</strong> <span>— SLIs power SLOs</span></li>
+          <li class="fragment fade-up"><strong>Alert on pain, not noise</strong> <span>— page humans when users hurt</span></li>
+        </ul>
 
-        <div class="why-grid fragment">
-          <div>👀 <strong>Measure what users feel</strong> — facts, not guesses</div>
-          <div>🤝 <strong>End the "is it broken?" debate</strong> — above the line or below it</div>
-          <div>💸 <strong>Spend the error budget wisely</strong> — SLIs power SLOs</div>
-          <div>🔕 <strong>Alert on pain, not noise</strong> — page humans when <em>users</em> hurt</div>
-        </div>
-
-        <p class="fragment teal punch">
-          Measure the user's happiness — not the machine's vital signs. 💚
+        <p class="kicker fragment fade-in">
+          Measure the user's happiness — not the machine's vital signs.
         </p>
       </section>
 
     </div>
   </div>
 
+  <div class="footer">Ashish</div>
+
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
   <script>
     Reveal.initialize({
-      hash: true,        // URL hash like #/1 — same page, refresh-safe on GitHub Pages
-      slideNumber: true,
-      transition: 'slide',
+      hash: true,              // in-page #/1 routing — refresh-safe on GitHub Pages
+      slideNumber: 'c/t',
+      transition: 'fade',
+      transitionSpeed: 'default',
+      controls: false,
+      progress: true,
+      center: true,
+      margin: 0.04,
     });
   </script>
 </body>
