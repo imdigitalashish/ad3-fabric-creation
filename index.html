@@ -239,6 +239,23 @@
     .grow-x { transform-box: fill-box; transform-origin: left center; }
     .reveal section.present .grow-x { animation: growx 0.9s ease both 0.3s; }
     @keyframes growx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    /* magnifier scanning incidents — the "why?" */
+    .scope { animation: scan 5.5s ease-in-out infinite; }
+    @keyframes scan {
+      0%, 100% { transform: translate(0, 0); }
+      25%      { transform: translate(-26px, -18px); }
+      50%      { transform: translate(20px, 8px); }
+      75%      { transform: translate(-6px, 22px); }
+    }
+    .why {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      fill: var(--accent);
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
   </style>
 </head>
 <body>
@@ -322,6 +339,45 @@
               <g transform="rotate(240 150 150)"><path class="incident" style="--d:1.8s" d="M236 150 L252 141 L252 159 Z" fill="var(--fg)"/></g>
               <g transform="rotate(280 150 150)"><path class="incident" style="--d:2.1s" d="M236 150 L252 141 L252 159 Z" fill="var(--fg)"/></g>
               <g transform="rotate(320 150 150)"><path class="incident" style="--d:2.4s" d="M236 150 L252 141 L252 159 Z" fill="var(--accent)"/></g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5 — Analyzing a CUJ -->
+      <section>
+        <div class="split">
+          <div class="col">
+            <span class="eyebrow anim" style="--i:0">Context</span>
+            <h2 class="anim" style="--i:1">Analyzing a CUJ</h2>
+            <ul class="points story">
+              <li class="fragment fade-up">Pick one <em>scenario</em> inside a CUJ</li>
+              <li class="fragment fade-up">Pull <em>every related incident</em></li>
+              <li class="fragment fade-up">Ask <em>why</em> — surface the root causes</li>
+            </ul>
+            <p class="kicker fragment fade-in">Why did it keep happening?</p>
+          </div>
+
+          <div class="art">
+            <svg viewBox="0 0 300 300" role="img" aria-label="A magnifier scanning incidents to find the why">
+              <!-- scattered incidents -->
+              <path d="M62 72 l9 16 h-18 Z"  fill="var(--fg)"   opacity="0.45"/>
+              <path d="M112 50 l8 14 h-16 Z" fill="var(--fg)"   opacity="0.45"/>
+              <path d="M214 78 l9 16 h-18 Z" fill="var(--fg)"   opacity="0.45"/>
+              <path d="M252 138 l8 14 h-16 Z" fill="var(--fg)"  opacity="0.45"/>
+              <path d="M70 206 l8 14 h-16 Z"  fill="var(--fg)"  opacity="0.45"/>
+              <path d="M126 244 l9 16 h-18 Z" fill="var(--fg)"  opacity="0.45"/>
+              <path d="M228 224 l8 14 h-16 Z" fill="var(--fg)"  opacity="0.45"/>
+              <path d="M178 158 l9 16 h-18 Z" fill="var(--accent)"/>
+
+              <!-- magnifier + why -->
+              <g class="scope">
+                <circle cx="150" cy="150" r="54" fill="var(--bg)" fill-opacity="0.55"
+                        stroke="var(--accent)" stroke-width="2.5"/>
+                <line x1="189" y1="189" x2="222" y2="222" stroke="var(--accent)"
+                      stroke-width="5" stroke-linecap="round"/>
+                <text x="150" y="150" text-anchor="middle" dominant-baseline="central" class="why">?</text>
+              </g>
             </svg>
           </div>
         </div>
