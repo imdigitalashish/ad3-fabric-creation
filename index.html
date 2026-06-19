@@ -154,6 +154,16 @@
       font-size: 13px;
     }
     .reveal .progress { color: var(--accent); height: 2px; }
+
+    /* ---------- centered divider slide ---------- */
+    .reveal section.divider { text-align: center; }
+    .reveal section.divider .eyebrow { justify-content: center; }
+    .reveal section.divider .eyebrow::after {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -187,6 +197,12 @@
         <p class="kicker fragment fade-in">
           Measure the user's happiness — not the machine's vital signs.
         </p>
+      </section>
+
+      <!-- Slide 3 — Context divider -->
+      <section class="divider">
+        <span class="eyebrow">01</span>
+        <h1>Context</h1>
       </section>
 
     </div>
