@@ -1,26 +1,27 @@
 # SLI Creation
 
-A simple [Slidev](https://sli.dev) presentation.
+A [reveal.js](https://revealjs.com) presentation.
 
 🔗 **Live site:** https://imdigitalashish.github.io/ad3-fabric-creation/
 
-## Development
+## Edit
 
-```bash
-npm install
-npm run dev      # start dev server at http://localhost:3030
-```
+Everything lives in a single [`index.html`](index.html). Edit the
+`<section>` elements to change slides, then just open `index.html` in a
+browser to preview — no build step, no dependencies.
 
-Edit `slides.md` and the page reloads automatically.
+reveal.js itself is loaded from a CDN, so the page is fully self-contained.
 
-## Build
+## Navigation
 
-```bash
-npm run build    # output static site to dist/
-```
+- Arrow keys / space to move between slides
+- `f` for fullscreen, `s` for speaker notes, `Esc` for the slide overview
+
+Slide URLs use the in-page hash (e.g. `#/1`), so refreshing or sharing any
+slide works and never 404s on GitHub Pages.
 
 ## Deployment
 
-This site is deployed to GitHub Pages automatically via the
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow
-on every push to `main`.
+Auto-deployed to GitHub Pages via the
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow on
+every push to `main`.

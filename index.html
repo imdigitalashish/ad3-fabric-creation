@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLI Creation</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+  <style>
+    :root { --r-link-color: #4EC5D4; --r-link-color-hover: #4EC5D4; }
+    .reveal .gradient-title {
+      font-size: 3.6rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #4EC5D4 10%, #146b8c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .reveal .teal { color: #4EC5D4; font-weight: 700; }
+    .reveal .muted { opacity: 0.75; }
+    .reveal .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5em 1.4em;
+      font-size: 0.62em;
+      text-align: left;
+      margin-top: 0.4em;
+    }
+    .reveal .punch { font-size: 1.1em; margin-top: 0.6em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1 -->
+      <section>
+        <h1 class="gradient-title">SLI Creation</h1>
+        <p>Ashish</p>
+      </section>
+
+      <!-- Slide 2 -->
+      <section>
+        <h2>Why create SLIs? 🤔</h2>
+
+        <p class="muted">
+          It's 2 AM. The dashboard is <em>green</em>, the CPU is <em>fine</em>, the
+          server is <em>up</em> ✅ — so why are customers angry?
+          Because <span class="teal">"up" ≠ "working well."</span>
+        </p>
+
+        <p class="fragment">
+          An <strong>SLI</strong> turns the user's actual experience into a number
+          you can see — <em>"did the page load fast? did the request succeed?"</em>
+          — not <em>"is the CPU busy?"</em>
+        </p>
+
+        <div class="why-grid fragment">
+          <div>👀 <strong>Measure what users feel</strong> — facts, not guesses</div>
+          <div>🤝 <strong>End the "is it broken?" debate</strong> — above the line or below it</div>
+          <div>💸 <strong>Spend the error budget wisely</strong> — SLIs power SLOs</div>
+          <div>🔕 <strong>Alert on pain, not noise</strong> — page humans when <em>users</em> hurt</div>
+        </div>
+
+        <p class="fragment teal punch">
+          Measure the user's happiness — not the machine's vital signs. 💚
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,        // URL hash like #/1 — same page, refresh-safe on GitHub Pages
+      slideNumber: true,
+      transition: 'slide',
+    });
+  </script>
+</body>
+</html>
