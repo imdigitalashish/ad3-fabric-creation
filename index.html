@@ -126,6 +126,12 @@
     .reveal .points strong { font-weight: 600; color: var(--fg); }
     .reveal .points span   { color: var(--muted); }
 
+    /* wider variant for full-sentence narrative lists */
+    .reveal .points.story { max-width: 44ch; gap: 1.05em; }
+    .reveal .points.story li { font-size: 0.66em; line-height: 1.5; color: var(--muted); }
+    .reveal .points.story li::before { top: 0.6em; }
+    .reveal .points.story em { color: var(--fg); font-weight: 500; }
+
     .reveal .kicker {
       margin-top: 1.5em;
       font-size: 0.8em;
@@ -203,6 +209,29 @@
       <section class="divider">
         <span class="eyebrow">01</span>
         <h1>Context</h1>
+      </section>
+
+      <!-- Slide 4 — How it started -->
+      <section>
+        <span class="eyebrow">Context</span>
+        <h2>How it started</h2>
+        <ul class="points story">
+          <li class="fragment fade-up">
+            Before authoring SLIs, we first needed to know <em>what to measure</em>
+            and <em>which objectives</em> to target.
+          </li>
+          <li class="fragment fade-up">
+            So we began by analyzing a lot of <em>incidents</em>.
+          </li>
+          <li class="fragment fade-up">
+            It was all manual — so I built <em>ZPI</em> to capture what everyone
+            was doing into memory, making the whole process far faster.
+          </li>
+          <li class="fragment fade-up">
+            With every incident mapped to a <em>CUJ</em>, we identified the top
+            contributing factors and started picking them off.
+          </li>
+        </ul>
       </section>
 
     </div>
