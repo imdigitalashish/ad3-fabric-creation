@@ -223,6 +223,22 @@
       76%  { opacity: 1; }
       100% { opacity: 0; transform: translateX(-42px); }
     }
+
+    /* staggered entrance — replays every time a slide is shown */
+    .anim { opacity: 0; }
+    .reveal section.present .anim {
+      animation: rise 0.6s ease both;
+      animation-delay: calc(var(--i, 0) * 0.12s + 0.15s);
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* horizontal grow-in (e.g. the SLO threshold line) */
+    .grow-x { transform-box: fill-box; transform-origin: left center; }
+    .reveal section.present .grow-x { animation: growx 0.9s ease both 0.3s; }
+    @keyframes growx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   </style>
 </head>
 <body>
@@ -231,28 +247,27 @@
 
       <!-- Slide 1 — Title -->
       <section data-auto-animate>
-        <span class="eyebrow">Reliability Engineering</span>
-        <h1 data-id="title">SLI Creation</h1>
-        <p class="subtitle">Measuring what your users actually feel.</p>
+        <span class="eyebrow anim" style="--i:0">Reliability Engineering</span>
+        <h1 data-id="title" class="anim" style="--i:1">SLI Creation</h1>
+        <p class="subtitle anim" style="--i:2">Measuring what users feel.</p>
       </section>
 
       <!-- Slide 2 — Why -->
       <section>
         <div class="split">
           <div class="col">
-            <span class="eyebrow">Service Level Indicators</span>
-            <h2>Why we create SLIs</h2>
+            <span class="eyebrow anim" style="--i:0">Service Level Indicators</span>
+            <h2 class="anim" style="--i:1">Why we create SLIs</h2>
 
-            <p class="lead">
-              It's 2&nbsp;AM. Dashboards <em>green</em>, CPU <em>fine</em>, server
-              <em>up</em> — yet users are angry. <span class="accent">"Up" isn't "working well."</span>
+            <p class="lead anim" style="--i:2">
+              Green dashboards, angry users. <span class="accent">"Up" isn't "working well."</span>
             </p>
 
             <ul class="points">
-              <li class="fragment fade-up"><strong>Measure what users feel</strong> <span>— facts, not guesses</span></li>
-              <li class="fragment fade-up"><strong>End the "is it broken?" debate</strong> <span>— above the line, or below it</span></li>
-              <li class="fragment fade-up"><strong>Spend the error budget wisely</strong> <span>— SLIs power SLOs</span></li>
-              <li class="fragment fade-up"><strong>Alert on pain, not noise</strong> <span>— page humans when users hurt</span></li>
+              <li class="fragment fade-up"><strong>Measure what users feel</strong></li>
+              <li class="fragment fade-up"><strong>Settle "is it broken?" with data</strong></li>
+              <li class="fragment fade-up"><strong>Spend the error budget</strong></li>
+              <li class="fragment fade-up"><strong>Alert on pain, not noise</strong></li>
             </ul>
           </div>
 
@@ -260,7 +275,7 @@
             <svg viewBox="0 0 320 230" role="img" aria-label="An SLI tracked against an SLO threshold">
               <line x1="26" y1="198" x2="306" y2="198" stroke="var(--line)" stroke-width="1.5"/>
               <line x1="26" y1="24"  x2="26"  y2="198" stroke="var(--line)" stroke-width="1.5"/>
-              <line x1="26" y1="76"  x2="306" y2="76"  stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.8"/>
+              <line class="grow-x" x1="26" y1="76"  x2="306" y2="76"  stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.8"/>
               <text x="306" y="68" text-anchor="end" class="svg-label">SLO</text>
               <polyline class="draw" fill="none" stroke="var(--fg)" stroke-width="2.5"
                         stroke-linecap="round" stroke-linejoin="round"
@@ -273,32 +288,21 @@
 
       <!-- Slide 3 — Context divider -->
       <section class="divider">
-        <span class="eyebrow">01</span>
-        <h1>Context</h1>
+        <span class="eyebrow anim" style="--i:0">01</span>
+        <h1 class="anim" style="--i:1">Context</h1>
       </section>
 
       <!-- Slide 4 — How it started -->
       <section>
         <div class="split">
           <div class="col">
-            <span class="eyebrow">Context</span>
-            <h2>How it started</h2>
+            <span class="eyebrow anim" style="--i:0">Context</span>
+            <h2 class="anim" style="--i:1">How it started</h2>
             <ul class="points story">
-              <li class="fragment fade-up">
-                Before authoring SLIs, we first needed to know <em>what to measure</em>
-                and <em>which objectives</em> to target.
-              </li>
-              <li class="fragment fade-up">
-                So we began by analyzing a lot of <em>incidents</em>.
-              </li>
-              <li class="fragment fade-up">
-                It was all manual — so I built <em>ZPI</em> to capture what everyone
-                was doing into memory, making the whole process far faster.
-              </li>
-              <li class="fragment fade-up">
-                With every incident mapped to a <em>CUJ</em>, we identified the top
-                contributing factors and started picking them off.
-              </li>
+              <li class="fragment fade-up">Know <em>what to measure</em> — and which objectives to target</li>
+              <li class="fragment fade-up">Analyze a lot of <em>incidents</em></li>
+              <li class="fragment fade-up">Built <em>ZPI</em> to capture the manual work into memory — far faster</li>
+              <li class="fragment fade-up">Map each incident to a <em>CUJ</em> → pick the top contributors</li>
             </ul>
           </div>
 
